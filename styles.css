@@ -1,220 +1,254 @@
-body html {
-    margin:0;
+/* General Styles */
+body, html {
+    margin: 0;
     padding: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: #f1f4fd;
+    /*background-color: #f1f4fd;*/
 }
 
-/*NAVBAR BEGIN*/
-
+/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 160px;
-    background-color: rgb(43, 71, 25);
+    height: 180px;
+    background-color: rgba(43, 71, 25, .9);
     padding: 0 20px;
 }
 
 .logo {
+    font-family: 'Dancing Script', cursive;
     color: rgb(240, 180, 162);
-    font-size: 90px;
+    font-size: 160px;
     font-weight: bold;
+    text-align: center;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
+    justify-content: space-evenly;
+}
+
+.nav-links.left {
+    justify-content: space-between;
+
+}
+
+.nav-links.right {
+    justify-content: flex-end;
 }
 
 .nav-links li {
-    padding: 0 20px;
+    padding: 0 10px;
 }
 
 .nav-links a {
     color: #fff;
     text-decoration: none;
-    font-size: 50px;
-}
-/*NAVBAR END*/
-
-/*SLIDESHOW BEGIN*/
-.gallary {
-        display:flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        background: f1f4fd;
+    font-size: 40px;
+    justify-content: space-between;
 }
 
-.container {
-    /*thinking about removing max-width 
-    max-width: 1200px;*/
-    width: 100%;
-}
-
-/*.slider-wrapper position sets the arrows in the middle of the slideshow*/
+/* Slider */
 .slider-wrapper {
     position: relative;
+    margin-bottom: 20px;
 }
 
-.slider-wrapper .slide-button {
+.slide-button {
     position: absolute;
     top: 50%;
-    height: 50px;
-    width: 50px;
-    color: #fff;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
     border: none;
-    outline: none;
-    background: #000;
-    font-size: 2.2rem;
+    padding: 10px;
     cursor: pointer;
-    border-radius: 50%;
-    transform: translateY(-50%)
+    transition: background 0.3s;
 }
 
-.slider-wrapper .slide-button:hover {
-    background: #444;
+.slide-button:hover {
+    background: rgba(255, 255, 255, 1);
 }
 
-/*ALERT: remove display:none below if you dont like not seeing it?*/
-.slider-wrapper .slide-button#prev-slide {
-    left: -20px;
-    display: none;
+#prev-slide {
+    left: 10px;
 }
 
-.slider-wrapper .slide-button#next-slide {
-    right: -20px;
+#next-slide {
+    right: 10px;
 }
 
-.slider-wrapper .image-list {
-    display:grid;
-    gap:16px;
-    font-size: 0;
-    margin-bottom: 30px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    grid-template-columns: repeat(10, 1fr);
-}
-
-.slider-wrapper .image-list::-webkit-scrollbar {
-    display: none;
-}
-
-/*ADJUST SIZES OF SLIDESHOW PICTURES*/
-.slider-wrapper .image-list .image-item {
-    width: 1500px;
-    height: 1800px;
-    object-fit: cover;
-}
-
-.container .slider-scrollbar {
-    height: 24px;
-    width: 100%;
-    background: green;
+.image-list {
     display: flex;
-    align-items: center;
+    overflow-x: scroll;
+    gap: 20px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Hide default scrollbar */
 }
 
-.slider-scrollbar .scrollbar-track {
-    height: 2px ;
-    width: 100%;
-    background: #ccc;
+.image-item {
+    flex: 0 0 auto;
+    max-width: 100%;
+    height: auto;
+    scroll-snap-align: center;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.image-item:hover {
+    transform: scale(1.05);
+}
+
+.image-list::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, Opera */
+}
+
+/* Scrollbar */
+.slider-scrollbar {
     position: relative;
+    height: 8px;
+    background: #e0e0e0;
     border-radius: 4px;
+    margin: 10px 0;
 }
 
-.slider-scrollbar:hover .scrollbar-track {
-    height: 4px;
+.scrollbar-track {
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-.slider-scrollbar .scrollbar-thumb {
-    position: absolute;
+.scrollbar-thumb {
     height: 100%;
     width: 50%;
-    background: #000;
-    border-radius: inherit;
+    background: #007BFF;
+    border-radius: 4px;
     cursor: grab;
 }
 
-.slider-scrollbar .scrollbar-thumb:active {
+.scrollbar-thumb:active {
     cursor: grabbing;
-    height: 8px;
-    top: -2px;
-    bottom: -2px;
 }
 
-.slider-scrollbar .scrollbar-thumb::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -10px;
-    bottom: -10px;
-}
-/*SLIDESHOW END*/
-
-/*ABOUT US*/
+/* About Us */
 .about-us {
-    padding: 40px;
-    background-color: #fff;
-    text-align: center;
-    margin-top: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+
 }
 
 .about-us h2 {
-    font-size: 36px;
-    color: rgb(43, 71, 25);
-    margin-bottom: 20px;
+    font-size: 60px;
+    color: black;
+    text-align: center;
 }
 
 .about-us p {
-    font-size: 18px;
-    color: #333;
+    font-size: 32px;
+    color: black;
     line-height: 1.6;
     margin-bottom: 20px;
+    text-align: center;
 }
 
-/*MEDIA QUIERY BEGIN*/
+/* Contact Section */
+.contact-section {
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.contact-us .grid-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.map-container {
+    height: 800px;
+}
+
+.contact-us {
+    width: 75%;
+    margin: 0 auto;
+    background-image: url("img/pale_pink_background.jpg");
+    background-size: cover;
+    height: 1300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: top;
+}
+.contact-us form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.contact-us label {
+    margin: 10px 0 5px;
+    text-align: left;
+}
+
+.contact-us input,
+.contact-us textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.contact-us button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contact-us button:hover {
+    background-color: #555;
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
         position: absolute;
-        background-color: rgb(127, 98, 75);
-        top: 60px;
+        background-color: rgb(127, 98, 97);
+        top: 80px;
+        left: 0;
         right: 0;
-        width:100%;
-        flex-direction: column;
-        align-items: center;
+        padding: 10px;
     }
 
     .nav-links li {
-        padding: 15px 0;
+        display: block;
+        text-align: center;
+        padding: 10px 0;
     }
 
-    .nav-active {
-        display: flex;
-    }
-}
-
-@media (max-width: 1023px) {
-    .slider-wrapper .slide-button {
-        display: none!important;
-    }
-
-    .slider-wrapper .image-list {
-        gap: 10px;
-        margin-bottom: 15px;
-    }
-
-    .slider-wrapper .image-list .image-item {
-        width: 280px;
-        height: 380px;
+    .slider-wrapper {
+        overflow-x: scroll;
+        scrollbar-width: none;
     }
 
     .slider-scrollbar .scrollbar-thumb {
         width: 20%;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
     }
 }
