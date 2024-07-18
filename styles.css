@@ -26,17 +26,17 @@ body, html {
 
 .nav-links {
     list-style: none;
-    display: flex;
-    justify-content: space-evenly;
+    /*HEREdisplay: flex;
+    justify-content: space-evenly;*/
 }
 
 .nav-links.left {
-    justify-content: space-between;
+    /*HEREjustify-content: space-evenly;*/
 
 }
 
 .nav-links.right {
-    justify-content: flex-end;
+    /*HEREjustify-content: space-between;*/
 }
 
 .nav-links li {
@@ -64,7 +64,7 @@ body, html {
     border: none;
     padding: 10px;
     cursor: pointer;
-    transition: background 0.3s;
+    /*transition: background 0.3s;*/
 }
 
 .slide-button:hover {
