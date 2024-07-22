@@ -10,7 +10,6 @@
     <script src="slideshow.js" defer></script>
 </head>
 <body>
-
     <nav class="navbar">
         <ul class="nav-links left">
             <li><a href="#gallery">Gallery</a></li>
@@ -22,11 +21,11 @@
             <li><a href="#contact-section">Contact Us</a></li>
         </ul>
     </nav>    
-
     <div class="container">
         <div id="gallery" class="slider-wrapper">
             <button id="prev-slide" class="slide-button material-symbols-rounded">chevron_left</button>
-            <div src="images.jsons" class="image-list">
+            <div class="image-list">
+                <!-- Image items will be dynamically loaded here -->
             </div>
             <button id="next-slide" class="slide-button material-symbols-rounded">chevron_right</button>
         </div>
@@ -44,22 +43,20 @@
         <section id="contact-section" class="contact-section">
             <div class="contact-grid">
                 <div class="contact-image">
-                    <img src="img/Pink_rose_cake.jpg" alt="Pink_Rose_Cake">
+                    <img src="img/Pink_rose_cake.jpg" alt="Pink Rose Cake">
                 </div>
                 <div class="form-container">
                     <form class="contact-form">
                         <h2>Contact Us</h2>
-                        <input type="text" id="name" placeholder="Name"></br>
-                        <input type="email" id="email" placeholder="Email"></br>
-                        <input type="phone" id="phone" placeholder="Phone Number"></br>
-                        <textarea id="message" placeholder="message" cols="30" rows="10"></textarea></br>
+                        <input type="text" id="name" placeholder="Name"><br>
+                        <input type="email" id="email" placeholder="Email"><br>
+                        <input type="phone" id="phone" placeholder="Phone Number"><br>
+                        <textarea id="message" placeholder="Message" cols="30" rows="10"></textarea><br>
                         <input type="submit" class="submit" value="Send Message">
                     </form>
                 </div>
             </div>
         </section>
-        
-        
     </div>
     <script src="/app.js"></script>
 </body>
