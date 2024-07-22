@@ -1,93 +1,115 @@
-const initSlider = () => {
+const initSlider = async (initialIndex = 0) => {
     const imageList = document.querySelector(".slider-wrapper .image-list");
     const slideButtons = document.querySelectorAll(".slider-wrapper .slide-button");
     const sliderScrollbar = document.querySelector(".slider-scrollbar");
     const scrollbarThumb = sliderScrollbar.querySelector(".scrollbar-thumb");
-    const maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
-    const autoSlideInterval = 3000; // 3 seconds interval for auto rotation
 
-    let autoSlideTimeout;
+    let slides = [];
 
-    const startAutoSlide = () => {
-        autoSlideTimeout = setInterval(() => {
-            const scrollAmount = imageList.clientWidth;
-            if (imageList.scrollLeft >= maxScrollLeft) {
-                imageList.scrollTo({ left: 0, behavior: "smooth" });
-            } else {
-                imageList.scrollBy({ left: scrollAmount, behavior: "smooth" });
-            }
-        }, autoSlideInterval);
-    };
+    try {
+        const response = await fetch('images.json');
+        slides = await response.json();
+    } catch (error) {
+        console.error("Failed to load images:", error);
+        return; // Exit the function if images cannot be loaded
+    }
 
-    const stopAutoSlide = () => {
-        clearInterval(autoSlideTimeout);
-        startAutoSlide(); // Restart auto slide after user interaction
-    };
+    const doubledSlides = [...slides, ...slides, ...slides, ...slides, ...slides, ...slides, ...slides];
 
-    // Handles scrollbar thumb drag
-    scrollbarThumb.addEventListener("mousedown", (e) => {
-        const startX = e.clientX;
-        const thumbPosition = scrollbarThumb.offsetLeft;
-
-        const handleMouseMove = (e) => {
-            const deltaX = e.clientX - startX;
-            const newThumbPosition = thumbPosition + deltaX;
-            const maxThumbPosition = sliderScrollbar.getBoundingClientRect().width - scrollbarThumb.offsetWidth;
-
-            const boundedPosition = Math.max(0, Math.min(maxThumbPosition, newThumbPosition));
-            const scrollPosition = (boundedPosition / maxThumbPosition) * maxScrollLeft;
-
-            scrollbarThumb.style.left = `${boundedPosition}px`;
-            imageList.scrollLeft = scrollPosition;
-        };
-
-        const handleMouseUp = () => {
-            document.removeEventListener("mousemove", handleMouseMove);
-            document.removeEventListener("mouseup", handleMouseUp);
-        };
-
-        document.addEventListener("mousemove", handleMouseMove);
-        document.addEventListener("mouseup", handleMouseUp);
+    doubledSlides.forEach(image => {
+        const imgElement = document.createElement('img');
+        imgElement.src = image.src;
+        imgElement.alt = image.alt;
+        imgElement.classList.add('image-item');
+        imageList.appendChild(imgElement);
     });
 
-    slideButtons.forEach(button => {
+    const slideWidth = imageList.children[0].clientWidth + 20; // Adjust for gap
+    const initialScrollLeft = slideWidth * initialIndex; // Calculate initial scroll position
+
+    let slideIndex = initialIndex + slides.length; // Start at the specific slide in the duplicated list
+    let autoplayInterval;
+
+    const scrollToSlide = (index, behavior = "smooth") => {
+        imageList.scrollTo({
+            left: slideWidth * index,
+            behavior: behavior
+        });
+    };
+
+    const updateThumbPosition = () => {
+        const scrollFraction = imageList.scrollLeft / (imageList.scrollWidth - imageList.clientWidth);
+        scrollbarThumb.style.left = scrollFraction * 100 + "%";
+    };
+
+    const handleScrollEnd = () => {
+        if (imageList.scrollLeft >= slideWidth * (doubledSlides.length - slides.length)) {
+            imageList.scrollLeft = slideWidth * slides.length;
+        }
+        if (imageList.scrollLeft <= 0) {
+            imageList.scrollLeft = slideWidth * (doubledSlides.length - slides.length);
+        }
+    };
+
+    const startAutoplay = () => {
+        autoplayInterval = setInterval(() => {
+            slideIndex = (slideIndex + 1) % doubledSlides.length;
+            scrollToSlide(slideIndex);
+        }, 3000); // Change slide every 3 seconds
+    };
+
+    const stopAutoplay = () => {
+        clearInterval(autoplayInterval);
+    };
+
+    slideButtons.forEach((button) => {
         button.addEventListener("click", () => {
-            const direction = button.id === "prev-slide" ? -1 : 1;
-            const scrollAmount = imageList.clientWidth * direction;
-            imageList.scrollBy({ left: scrollAmount, behavior: "smooth" });
-            stopAutoSlide(); // Restart auto slide after button click
+            stopAutoplay();
+            if (button.id === "prev-slide") {
+                slideIndex = (slideIndex - 1 + doubledSlides.length) % doubledSlides.length;
+            } else {
+                slideIndex = (slideIndex + 1) % doubledSlides.length;
+            }
+            scrollToSlide(slideIndex);
+            startAutoplay();
         });
     });
 
-    const handleSlideButtons = () => {
-        slideButtons[0].style.display = imageList.scrollLeft <= 0 ? "none" : "block";
-        slideButtons[1].style.display = imageList.scrollLeft >= maxScrollLeft ? "none" : "block";
-    };
-
-    const updateScrollThumbPosition = () => {
-        const scrollPosition = imageList.scrollLeft;
-        const thumbPosition = (scrollPosition / maxScrollLeft) * (sliderScrollbar.clientWidth - scrollbarThumb.offsetWidth);
-        scrollbarThumb.style.left = `${thumbPosition}px`;
-    };
-
     imageList.addEventListener("scroll", () => {
-        handleSlideButtons();
-        updateScrollThumbPosition();
+        updateThumbPosition();
+        handleScrollEnd();
     });
 
-    startAutoSlide(); // Start automatic sliding when page loads
+    scrollbarThumb.addEventListener("mousedown", (event) => {
+        stopAutoplay();
+        const startX = event.pageX;
+        const startLeft = scrollbarThumb.offsetLeft;
+
+        const onMouseMove = (moveEvent) => {
+            const deltaX = moveEvent.pageX - startX;
+            const newLeft = Math.max(0, Math.min(startLeft + deltaX, sliderScrollbar.clientWidth - scrollbarThumb.clientWidth));
+            const scrollFraction = newLeft / sliderScrollbar.clientWidth;
+            imageList.scrollTo({
+                left: scrollFraction * (imageList.scrollWidth - imageList.clientWidth),
+                behavior: "auto"
+            });
+        };
+
+        const onMouseUp = () => {
+            document.removeEventListener("mousemove", onMouseMove);
+            document.removeEventListener("mouseup", onMouseUp);
+            startAutoplay();
+        };
+
+        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mouseup", onMouseUp);
+    });
+
+    // Scroll to the initial position
+    imageList.scrollLeft = initialScrollLeft;
+
+    // Start autoplay after a short delay to ensure smooth transition
+    setTimeout(startAutoplay, 1000);
 };
 
-window.addEventListener("load", initSlider);
-
-function initMap() {
-    const location = { lat: 38.283510, lng: -85.823000 }; // Replace with the desired location coordinates
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 20,
-        center: location,
-    });
-    const marker = new google.maps.Marker({
-        position: location,
-        map: map,
-    });
-}
+document.addEventListener("DOMContentLoaded", () => initSlider(0)); // Change 0 to the index of the strawberries image

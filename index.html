@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
-    <script src="script.js" defer></script>
+    <script src="slideshow.js" defer></script>
 </head>
 <body>
+
     <nav class="navbar">
         <ul class="nav-links left">
             <li><a href="#gallery">Gallery</a></li>
@@ -21,49 +22,11 @@
             <li><a href="#contact-section">Contact Us</a></li>
         </ul>
     </nav>    
+
     <div class="container">
         <div id="gallery" class="slider-wrapper">
             <button id="prev-slide" class="slide-button material-symbols-rounded">chevron_left</button>
-            <div class="image-list">
-                <img src="img/Pink_rose_cake.jpg" alt="Pink Rose Cake" class="image-item">
-                <img src="img/Strawberries.jpg" alt="Strawberries" class="image-item">
-                <img src="img/Oreo_cake.jpg" alt="Oreo Cake" class="image-item">
-                <img src="img/Dipped_Oreos.jpg" alt="Dipped Oreos" class="image-item">
-                <img src="img/Reese_cupcakes.jpg" alt="Reese Cupcakes" class="image-item">
-                <img src="img/chocolate_strawberry_cake.jpg" alt="Chocolate Strawberry Cake" class="image-item">
-                <img src="img/german_chocolate.jpg" alt="German Chocolate Cake" class="image-item">
-                <img src="img/Cookie_and_cream_cupcakes.jpg" alt="Cookie and Cream Cupcakes" class="image-item">
-                <img src="img/Lemon_curd.jpg" alt="Lemon Curd" class="image-item">
-                <img src="img/Mixed_dozen_2.jpg" alt="Mixed Dozen 2" class="image-item">
-                <img src="img/Strawberry_cupcakes.jpg" alt="Strawberry Cupcakes" class="image-item">
-                <img src="img/sode_bread.jpg" alt="Soda Bread" class="image-item">
-                <img src="img/oreo_cupcakes2.jpg" alt="Oreo Cupcakes2" class="image-item">
-                <img src="img/Coconut_almond_cake.jpg" alt="Coconut Almond Cake" class="image-item">
-                <img src="img/pink_cupcakes.jpg" alt="Pink Cupcakes" class="image-item">
-                <img src="img/Mixed_dozen_cupcakes.jpg" alt="Mixed Dozen Cupcakes" class="image-item">
-                <img src="img/white_chocolate_cake.jpg" alt="White Chocolate Cake" class="image-item">
-                <img src="img/flower_cake.jpg" alt="Flower Cake" class="image-item">
-                <img src="img/heath.jpg" alt="Heath" class="image-item">
-                <img src="img/mixed_muffins.jpg" alt="Mixed Muffin" class="image-item">
-                <img src="img/amung_us2.jpg" alt="Amung Us" class="image-item">
-                <img src="img/cookies.jpg" alt="Cookies" class="image-item">
-                <img src="img/Chocolate_caramel_cake.jpg" alt="Chocolate Caramel Cake" class="image-item">
-                <img src="img/red_velvet.jpg" alt="Red Velvet" class="image-item">
-                <img src="img/oreo_cupcakes.jpg" alt="Oreo Cupcakes" class="image-item">
-                <img src="img/unicorn_cake.jpg" alt="Unicorn" class="image-item">
-                <img src="img/Salted_caramel_cookie_cake.jpg" alt="Salter Caramel Cookie Cake" class="image-item">
-                <img src="img/cookie_cake.jpg" alt="Cookie Cake" class="image-item">
-                <img src="img/4.jpg" alt="4" class="image-item">
-                <img src="img/caramel_butter_cake.jpg" alt="Caramel Butter Cake" class="image-item">
-                <img src="img/k.jpg" alt="K" class="image-item">
-                <img src="img/pies.jpg" alt="Pies" class="image-item">
-                <img src="img/Chocolate_cake.jpg" alt="Chocolate Cake" class="image-item">
-                <img src="img/candy_cupcakes.jpg" alt="Candy cupcakes" class="image-item">
-                <img src="img/white_cupcakes.jpg" alt="White Cupcakes" class="image-item">
-                <img src="img/flower_cupcakes.jpg" alt="Flower Cupcakes" class="image-item">
-                <img src="img/orange_cupcakes.jpg" alt="Orange Cupcakes" class="image-item">
-                <img src="img/candyland_cupcakes.jpg" alt="Candyland cupcakes" class="image-item">
-                <img src="img/banana_pudding_cake.jpg" alt="Banana Pudding Cake" class="image-item">
+            <div src="images.jsons" class="image-list">
             </div>
             <button id="next-slide" class="slide-button material-symbols-rounded">chevron_right</button>
         </div>
@@ -79,23 +42,25 @@
             <p>Thank you for visiting our website. We look forward to serving you and making your celebrations extra special!</p>
         </div>
         <section id="contact-section" class="contact-section">
-            <div class="grid-container">
-                <div id="map" class="grid-item map-container"></div>
-                <script async src="***GOOGLE MAPS API HERE***"></script>
-                <div class="contact-us grid-item">
-                    <h2>Contact Us</h2>
-                    <form action="submit_form.php" method="post">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                        <label for="message">Message:</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
-                        <button type="submit">Submit</button>
+            <div class="contact-grid">
+                <div class="contact-image">
+                    <img src="img/Pink_rose_cake.jpg" alt="Pink_Rose_Cake">
+                </div>
+                <div class="form-container">
+                    <form class="contact-form">
+                        <h2>Contact Us</h2>
+                        <input type="text" id="name" placeholder="Name"></br>
+                        <input type="email" id="email" placeholder="Email"></br>
+                        <input type="phone" id="phone" placeholder="Phone Number"></br>
+                        <textarea id="message" placeholder="message" cols="30" rows="10"></textarea></br>
+                        <input type="submit" class="submit" value="Send Message">
                     </form>
                 </div>
             </div>
         </section>
+        
+        
     </div>
+    <script src="/app.js"></script>
 </body>
 </html>
