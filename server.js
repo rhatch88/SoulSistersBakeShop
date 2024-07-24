@@ -1,23 +1,26 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const path = require('path');
-
-
-
+const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(express.static('public'));
+app.use(cors()); // Enable CORS for all origins
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.post('/', (req, res) => {
-    console.log(req.body);
+app.post('/send-email', (req, res) => {
+    console.log("Received POST request");
+    const { name, email, phone, message } = req.body;
+
+    console.log("Form data:", name, email, phone, message);
     
     const transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -28,19 +31,19 @@ app.post('/', (req, res) => {
     });
 
     const mailOptions = {
-        from: req.body.email,
+        from: email,
         to: 'rhatch88@gmail.com',
-        subject: `Message from ${req.body.name}: ${req.body.subject}`,
-        text: req.body.message
+        subject: `Message from ${name}`,
+        text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.log(error);
-            res.status(500).send(JSON.stringify({ message: 'error' }));
+            console.log("Error sending email:", error);
+            res.status(500).send({ message: 'error' });
         } else {
             console.log('Email sent: ' + info.response);
-            res.status(200).send(JSON.stringify({ message: 'success' }));
+            res.status(200).send({ message: 'success' });
         }
     });
 });
