@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="slideshow.js" defer></script>
 </head>
 <body>
@@ -24,6 +25,7 @@
             <li><a href="#contact-section">Contact Us</a></li>
         </ul>
     </nav>
+    
     <div class="container">
         <div id="gallery" class="slider-wrapper">
             <div class="image-list">
@@ -35,34 +37,43 @@
                 <div class="scrollbar-thumb"></div>
             </div>
         </div>
+        
         <div id="about-us" class="about-us">
             <h2>About Us</h2>
             <p>Welcome to Soul Sisters Bake Shop! We are a family-owned bakery dedicated to creating delicious and beautiful baked goods. Our journey started with a passion for baking and a dream to share our love for sweet treats with the world. From cupcakes to wedding cakes, we put our heart and soul into every creation.</p>
             <p>Our team is committed to using the finest ingredients and traditional baking techniques to ensure every bite is a delightful experience. We believe in the magic of home-baked goodness and strive to bring joy to every occasion with our cakes, cookies, and pastries.</p>
             <p>Thank you for visiting our website. We look forward to serving you and making your celebrations extra special!</p>
         </div>
-        <section id="contact-section" class="contact-section">
+        <div class="contact-section">
             <div class="contact-grid">
-                <div class="Custom">
-                    <p>wanting something a little more...</p>
-                    <h2>Custom?</h2>
-                    <p>We'd love to hear from you!</p>
-                </div>
+                <div class="custom-div">Left Content</div>
                 <div class="contact-image">
                     <img src="img/Pink_rose_cake.jpg" alt="Pink Rose Cake">
                 </div>
                 <div class="form-container">
                     <form class="contact-form">
                         <h2>Contact Us</h2>
-                        <input type="text" id="name" placeholder="Name"><br>
-                        <input type="email" id="email" placeholder="Email"><br>
-                        <input type="phone" id="phone" placeholder="Phone Number"><br>
-                        <textarea id="message" placeholder="Message" cols="30" rows="10"></textarea><br>
-                        <input type="submit" class="submit" value="Send Message">
+                        <input type="text" name="name" placeholder="Your Name">
+                        <input type="email" name="email" placeholder="Your Email">
+                        <textarea name="message" placeholder="Your Message"></textarea>
+                        <button type="submit" class="submit">Send</button>
                     </form>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
+   
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <p>(555) 555-5555</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.facebook.com/SoulSistersBakeShop" class="fa fa-facebook"></a>
+                <a href="https://www.instagram.com/soulsistersbakeshop/" class="fa fa-instagram"></a>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

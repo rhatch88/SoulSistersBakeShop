@@ -56,7 +56,7 @@ body, html {
 .image-list {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: 125%;
+    width: 105%;
 }
 
 .image-item {
@@ -107,25 +107,40 @@ body, html {
 
 /* Contact Section */
 .contact-section {
+    background-image: url('img/green_cupcake_background.jpg');
+    background-size: cover;
     padding: 20px;
-    background: #e8f5e9;
-    text-align: center;
+    box-sizing: border-box;
 }
 
 .contact-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 20px;
-    align-items: center;
+    grid-template-columns: repeat(3, 1fr); 
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.contact-grid .Custom,
+.contact-grid .contact-image,
+.contact-grid .form-container {
+    padding: 10px;
+    border-radius: 5px; /* Optional: Rounded corners for each section */
+    width: 33%;
+    box-sizing: border-box;
+    align-items: start;
+    ;
 }
 
 .contact-image img {
-    max-width: 100%;
+    width: fit-content;
     height: auto;
     border-radius: 10px;
+    object-fit: cover;
 }
 
 .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: left;
 }
 
@@ -154,6 +169,66 @@ body, html {
 
 .contact-form .submit:hover {
     background: #1b3211;
+}
+
+/*FOOTER*/
+.footer {
+    background-color: rgba(43, 71, 25, .9);
+    padding: 10px 20px;
+    color: #fff;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left {
+    font-size: 3rem;
+}
+
+.footer-right a {
+    margin-left: 20px;
+    color: #fff;
+    font-size: 5rem; 
+    text-decoration: none; 
+    transition: transform 0.3s ease;
+    padding: 40px;
+    border-radius: 50px;
+    box-shadow: 10px 5px 5px black;
+}
+
+.footer-right a:hover {
+    transform: scale(1.1); 
+}
+
+/* FACEBOOK */
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  
+  /* INSTAGRAM */
+  .fa-instagram {
+    background: #125688;
+    color: white;
+  }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr; /* Stack grid items vertically on smaller screens */
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-right {
+        margin-top: 10px;
+    }
 }
 
 /* Media Queries */
@@ -218,10 +293,6 @@ body, html {
     
     .contact-section {
         padding: 60px;
-    }
-    
-    .contact-grid {
-        grid-template-columns: 1fr 1fr;
     }
     
     .contact-form h2 {
