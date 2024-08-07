@@ -34,28 +34,3 @@ window.initMap = async function() {
 // Append the 'script' element to 'head'
 document.head.appendChild(script);
       
-
-// async function initMap() {
-  // const position = { lat: 38.285454, lng: -85.820484 };
-  // const { Map } = await google.maps.importLibrary("maps");
-  // const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-
-  // map = new Map(document.getElementById("map"), {
-  //   zoom: 15, // Zoom in closer to the location
-  //   center: position,
-  //   mapId: "DEMO_MAP_ID",
-  // });
-
-  // // The marker, positioned at the bakery location
-  // const marker = new AdvancedMarkerElement({
-  //   map: map,
-  //   position: position,
-  //   title: "Soul Sisters Bake Shop Farmers Market Stand <3",
-  //   icon: {
-  //       url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-  //       scaledSize: new google.maps.Size(48, 48)
-  //   }
-  // });
-// }
-
-// initMap();

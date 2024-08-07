@@ -41,13 +41,13 @@
             <div class="image-list">
                 <!-- Images will be appended here by JavaScript -->
             </div>
-        </div>
+        <!-- </div>
         <div class="slider-scrollbar">
             <div class="scrollbar-track">
                 <div class="scrollbar-thumb"></div>
             </div>
         </div>
-        
+         -->
         <div id="about-us" class="about-us">
             <h2>About Us</h2>
             <p>Welcome to Soul Sisters Bake Shop! Established in 2019 by two best friends with a shared passion for baking, our bakery was born out of a desire to bring homemade delights to our community. From weddings and showers to birthdays and anniversaries, we create unforgettable desserts for all of life's special moments.</p>
@@ -79,25 +79,10 @@
                     <div id="map"></div>
                     <script>
                         (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
-                          key: "process.env.YOUR_API_KEY",
+                          key: "process.env.GOOGLE_MAPS_API_KEY",
                           v: "weekly",
-                          // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
-                          // Add other bootstrap parameters as needed, using camel case.
                         });
                       </script>
-   <!-- <script>
-        function initMap() {
-            const position = { lat: 38.285069, lng: -85.821152 };
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 10,
-                center: position,
-            });
-            new google.maps.Marker({
-                position: position,
-                map: map,
-            });
-        }
-    </script>-->
                 </div>
             </div>
         </div>
@@ -115,45 +100,7 @@
         </div>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!---<script>
-        $('form').on('submit', function(e) {
-            e.preventDefault();
-
-            const email = $('#email').val().trim();
-            const subject = $('#subject').val().trim();
-            const text = $('#text').val().trim();
-
-            const data = {
-                email,
-                subject,
-                text
-            };
-
-            $.ajax({
-                url: 'http://localhost:3000/email', // Updated URL to match your Node.js server
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(data),
-                success: function(response) {
-                    console.log('Server received our data');
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log('Error:', textStatus, errorThrown);
-                }
-            });
-        }); */
-    </script>--->
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <script src="pantry.js"></script>
-    <!--
-    <script>
-        (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
-          key: "AIzaSyDdT6SPD9g7Ve0bcKY-LQRdW10uMt257aY",
-          v: "weekly",
-          // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
-          // Add other bootstrap parameters as needed, using camel case.
-        });
-      </script>
-    -->
 </body>
 </html>

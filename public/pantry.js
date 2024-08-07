@@ -1,15 +1,30 @@
 document.getElementById('form').addEventListener('submit', function(e) {
   e.preventDefault();
-  const email = document.getElementById('email').value;
+  const emailInput = document.getElementById('email');
+  const email = emailInput.value;
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+
+  emailInput.classList.remove('shake', 'invalid');
+  const errorMessage = document.querySelector('.error-message');
+  if (errorMessage) {
+      errorMessage.remove();
+  }
+
   if (!emailPattern.test(email)) {
-      alert('If you would like to leave us a message please enter a valid email :)');
+      emailInput.classList.add('shake', 'invalid');
+      
+  
+      if (!errorMessage) {
+          const errorDiv = document.createElement('div');
+          errorDiv.classList.add('error-message');
+          errorDiv.innerText = 'Please enter a valid email address.';
+          emailInput.insertAdjacentElement('afterend', errorDiv);
+      }
       return;
   }
-});
 
-
+//HERE
 function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,3 +84,4 @@ function App() {
 }
 
 App();
+});
