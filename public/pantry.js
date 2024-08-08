@@ -24,7 +24,7 @@ document.getElementById('form').addEventListener('submit', function(e) {
       return;
   }
 
-//HERE
+//PANTRY SUBMITS START HERE
 function App() {
   const handleSubmit = (e) => {
     e.preventDefault();

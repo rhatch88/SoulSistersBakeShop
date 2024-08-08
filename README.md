@@ -1,7 +1,7 @@
 # SoulSistersBakeShop
 Soul Sisters Bake Shop
 
-Soul Sisters Bake Shop is a project I developed to showcase a bakery website. The goal was to create a user-friendly, visually appealing, fully responsive website. This project demonstrates my skills in web development, including HTML, CSS, JavaScript, and API integration.
+Soul Sisters Bake Shop is a project I developed to showcase a bakery website. The goal was to create a user-friendly, fully responsive, visually appealing website. This project demonstrates my skills in web development, including HTML, CSS, JavaScript, and API integration.
 
 My features list changed a bit from what I initally submitted so heres a revised features list: 
 

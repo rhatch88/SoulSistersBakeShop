@@ -92,7 +92,7 @@ body, html {
     font-size: 2rem;
     margin-bottom: 20px;
     color: #2b4719;
-    font-family: 'Allura', cursive;
+    /* font-family: 'Allura', cursive; */
 }
 
 .about-us p {
@@ -297,8 +297,10 @@ body, html {
 
 .footer {
     background-color: rgba(43, 71, 25, .9);
-    padding: 10px 20px;
     color: #fff;
+    margin-top: 5px;
+    width: auto;
+    height: auto;
 }
 
 .footer-content {
@@ -314,12 +316,12 @@ body, html {
 .footer-right a {
     margin-left: 20px;
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 2rem;
     text-decoration: none;
     transition: transform 0.3s ease;
     padding: 20px;
-    border-radius: 50px;
-    box-shadow: 10px 5px 5px black;
+    border-radius: 90px;
+    box-shadow: 3px 2px 2px black;
 }
 
 .footer-right a:hover {
