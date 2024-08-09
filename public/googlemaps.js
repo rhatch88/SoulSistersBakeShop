@@ -20,13 +20,9 @@ window.initMap = async function() {
     map: map,
     position: position,
     title: "Soul Sisters Bake Shop Farmers Market Stand <3",
-    // icon: {
-    //     url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-    //     scaledSize: new google.maps.Size(48, 48)
-    // }
   });
 };
 
-// Append the 'script' element to 'head'
+
 document.head.appendChild(script);
       
